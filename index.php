@@ -14,6 +14,8 @@ $smarty->debugging = true;
 $smarty->caching = true;
 $smarty->cache_lifetime = 120;
 
+
+if(!$_GET['site']){
 /*$smarty->assign("Name", "Fred Irving Johnathan Bradley Peppergill", true);
 $smarty->assign("FirstName", array("John", "Mary", "James", "Henry"));
 $smarty->assign("LastName", array("Doe", "Smith", "Johnson", "Case"));
@@ -27,7 +29,11 @@ $smarty->assign("option_values", array("NY", "NE", "KS", "IA", "OK", "TX"));
 $smarty->assign("option_output", array("New York", "Nebraska", "Kansas", "Iowa", "Oklahoma", "Texas"));
 $smarty->assign("option_selected", "NE");*/
 //$smarty->assign('','');
-$smarty->display('index.tpl');
+  $smarty->display('index.tpl');
+} elseif ($_GET['site'] == 'zoeken'){
+  $smarty->display('zoeken.tpl');
+}
+
 
 //$smarty->testInstall();
 ?>
