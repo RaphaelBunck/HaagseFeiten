@@ -1,23 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Haagse Feiten</title>
-<link type="text/css" rel="stylesheet" href="css/index.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-</head>
-
 <body>
-<?php include('navbar.php') // hier staan alle head variabelen, variabelen die standaard geinporteert moeten worden, beveiliging scripts enz. en de navbar?>
+<?php
+include('libraries/header.php');
+include('libraries/navbar.php'); // hier staan alle head variabelen, variabelen die standaard geinporteert moeten worden, beveiliging scripts enz. en de navbar?>
 
-
+<div>
 <div id="banner">
-  <img src="afbeeldingen/parlemetn.jpg">
+  <img src="afbeeldingen/parlement.jpg">
+  <div class="container-fluid" id="welcome">
+    <?php
+      if($_SESSION['logged_in'] == True) {
+        echo '<h3><b>Welkom bij Haagse Feiten!</b></h3>
+        <p>Zoek je voor een bepaald onderwerp? Gebruik dan deze zoekbalk!</p>
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Zoeken">
+          </div>
+          <button type="submit" class="btn btn-warning btn-lg">Registreer</button>
+        </form>';
+      } else {
+        echo '<h3><b>Welkom bij Haagse Feiten!</b></h3>
+        <p>Wat leuk dat je geïnteresseerd bent in politiek! Door een account aan te maken krijg je toegang tot een grote hoeveelheid interessante politieke documenten.</p>
+        <a href="register.php" ><button type="button" class="btn btn-warning btn-lg">Registreer</button></a>';
+      }
+
+
+    ?>
+  </div>
+</div>
 </div>
 
 <div class="container">
+
 
   <div class="row">
     <div class="col-sm-6 main" id="summary">
