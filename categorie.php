@@ -22,20 +22,20 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Onderwijs</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" backgroud-color=green>Onderwijs</a>
         </h4>
       </div>
-      <div id="collapse1" class="panel-collapse collapse in">
+      <div id="collapse1" class="panel-collapse collapse in" backgroud-color=green>
         <div class="panel-body">In het schooljaar 2016 zullen alle docenten verplicht hun naam in Gerd veranderen.</div>
         </div>
       </div>
       <div class="panel panel-default">
         <div class="panel-heading">
           <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">VIERKANT</a>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" background-color=blue>VIERKANT</a>
           </h4>
         </div>
-        <div id="collapse2" class="panel-collapse collapse">
+        <div id="collapse2" class="panel-collapse collapse" background-color=blue>
           <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
@@ -44,10 +44,10 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">DRIEHOEK</a>
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" backgroud-color=green>DRIEHOEK</a>
             </h4>
           </div>
-          <div id="collapse3" class="panel-collapse collapse">
+          <div id="collapse3" class="panel-collapse collapse" background-color=green>
             <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
               quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
