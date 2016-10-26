@@ -1,8 +1,8 @@
-<?php include('navbar.php') // hier staan alle head variabelen, variabelen die standaard geinporteert moeten worden, beveiliging scripts enz. en de navbar?> 
+<?php include('navbar.php') // hier staan alle head variabelen, variabelen die standaard geinporteert moeten worden, beveiliging scripts enz. en de navbar?>
 
 
 <div id="banner">
-  <img src="http://www.centrumeenenal.nl/wp-content/uploads/2012/07/blije-mensen.jpg">
+  <img src="image/banner.jpg">
 </div>
 
 <div class="container">
