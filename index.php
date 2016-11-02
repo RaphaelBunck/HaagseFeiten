@@ -15,7 +15,7 @@ include('libraries/navbar.php'); // hier staan alle head variabelen, variabelen 
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Zoeken">
           </div>
-          <button type="submit" class="btn btn-warning btn-lg">Registreer</button>
+          <button type="submit" class="btn btn-warning btn-lg">Zoeken</button>
         </form>';
       } else {
         echo '<h3><b>Welkom bij Haagse Feiten!</b></h3>
