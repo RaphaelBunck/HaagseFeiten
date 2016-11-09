@@ -1,20 +1,45 @@
-<?php include('navbar.php') // hier staan alle head variabelen, variabelen die standaard geinporteert moeten worden, beveiliging scripts enz. en de navbar?>
+<body>
+<?php
+include('libraries/header.php');
+include('libraries/navbar.php'); // hier staan alle head variabelen, variabelen die standaard geinporteert moeten worden, beveiliging scripts enz. en de navbar?>
 
-
+<div>
 <div id="banner">
-  <img src="image/banner.jpg">
+  <img src="afbeeldingen/parlement.jpg">
+  <div class="container-fluid" id="welcome">
+    <?php
+      if($_SESSION['logged_in'] == True) {
+        echo '<h3><b>Welkom bij Haagse Feiten!</b></h3>
+        <p>Zoek je voor een bepaald onderwerp? Gebruik dan deze zoekbalk!</p>
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Zoeken">
+          </div>
+          <button type="submit" class="btn btn-warning btn-lg">Zoeken</button>
+        </form>';
+      } else {
+        echo '<h3><b>Welkom bij Haagse Feiten!</b></h3>
+        <p>Wat leuk dat je geïnteresseerd bent in politiek! Door een account aan te maken krijg je toegang tot een grote hoeveelheid interessante politieke documenten.</p>
+        <a href="register.php" ><button type="button" class="btn btn-warning btn-lg">Registreer</button></a>';
+      }
+
+
+    ?>
+  </div>
+</div>
 </div>
 
 <div class="container">
+
 
   <div class="row">
     <div class="col-sm-6 main" id="summary">
       <h3>Wat is Haagse Feiten?</h3>
       <p>Haagse Feiten is een digitale dienst die toegang biedt tot parlementaire informatie die verrijkt wordt met data en informatie uit diverse relevante bronnen. Bronnen zoals:<p>
 
-        <p>Overheidsbronnen <br>
-          Nieuwsbronnen;<br>
-          Social media-kanalen.
+        <p>- Overheidsbronnen <br>
+          - Nieuwsbronnen;<br>
+          - Social media-kanalen.
         </p>
 
         Je hoeft dus nooit meer tientallen websites te bezoeken, want alle relevante informatie wordt in één oogopslag helder en inzichtelijk gepresenteerd door middel van een persoonlijk dashboard.<br>
