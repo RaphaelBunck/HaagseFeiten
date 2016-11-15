@@ -29,7 +29,7 @@
 
 <?php
   session_start();
-
+  error_reporting(0);
   if ($_SESSION['logged_in'] == True) {
     if (isset($_SESSION['username']) && isset($_SESSION['uid'])) {
       $uid = $_SESSION['uid'];

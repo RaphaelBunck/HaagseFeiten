@@ -1,4 +1,5 @@
 <?php
+
 include('libraries/header.php');
 
 include('libraries/navbar.php'); // hier staan alle head variabelen, variabelen die standaard geinporteert moeten worden, beveiliging scripts enz. en de navbar
@@ -122,11 +123,11 @@ if($_SESSION['logged_in'] != TRUE) {
                     $myDateTime = DateTime::createFromFormat('Y-m-d', $olddate);
                     $ddate = $myDateTime->format('d-m-Y');
                     echo '<tr>
-                            <td>'.$row["name"].'</td>
+                            <td><a href="#datamodal" data-toggle="modal" data-target="#datamodal">'.$row["name"].'</a></td>
                             <td>'.$row["subject"].'</td>
                             <td>'.$ddate.'</td>
                           </tr>';
-                      }
+                  }
                 }
 
             $sql = "SELECT * FROM Documents WHERE subject LIKE '%$search%'";
@@ -136,7 +137,7 @@ if($_SESSION['logged_in'] != TRUE) {
               $myDateTime = DateTime::createFromFormat('Y-m-d', $olddate);
               $ddate = $myDateTime->format('d-m-Y');
               echo '<tr>
-                      <td>'.$row["name"].'</td>
+                      <td><a href="#datamodal" data-toggle="modal" data-target="#datamodal">'.$row["name"].'</a></td>
                       <td>'.$row["subject"].'</td>
                       <td>'.$ddate.'</td>
                     </tr>';
@@ -149,7 +150,7 @@ if($_SESSION['logged_in'] != TRUE) {
               $myDateTime = DateTime::createFromFormat('Y-m-d', $olddate);
               $ddate = $myDateTime->format('d-m-Y');
               echo '<tr>
-                      <td>'.$row["name"].'</td>
+                      <td><a href="#datamodal" data-toggle="modal" data-target="#datamodal">'.$row["name"].'</a></td>
                       <td>'.$row["subject"].'</td>
                       <td>'.$ddate.'</td>
                     </tr>';
@@ -165,7 +166,7 @@ if($_SESSION['logged_in'] != TRUE) {
                   $myDateTime = DateTime::createFromFormat('Y-m-d', $olddate);
                   $ddate = $myDateTime->format('d-m-Y');
                   echo '<tr>
-                          <td>'.$row["name"].'</td>
+                          <td><a href="#datamodal" data-toggle="modal" data-target="#datamodal">'.$row["name"].'</a></td>
                           <td>'.$row["subject"].'</td>
                           <td>'.$ddate.'</td>
                         </tr>';
@@ -178,6 +179,32 @@ if($_SESSION['logged_in'] != TRUE) {
     </div>
 
     </div>
+
+    <a href="#datamodal" data-toggle="modal" data-target="#datamodal">
+  Launch demo modal
+</a>
+
+
+
+<div class="modal fade bs-example-modal-lg" id="datamodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <!--  <div class="footer">
     <div class="container-fluid">
       <ul id="footertext">
