@@ -74,28 +74,19 @@ if($_SESSION['logged_in'] != TRUE) {
       <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST" class="form-inline">
         <div class="form-group">
           <label>Zoek op zoekterm:</label>
-          <input type="text" class="form-control" placeholder="Zoekterm" name="search" value="<?php echo $_POST['search']?>">
+          <input type="text" class="form-control" placeholder="Zoekterm" name="search">
         </div>
         <div class="form-group">
           <label for="sel1">Zoek op onderwerp:</label>
-          <select class="form-control" id="sel1" name="category" onchange="this.form.submit()">
+          <select class="form-control" id="sel1" name="category">
             <option value="*" >Alle</option>
-            <option value="Onderwijs" <?php if($_POST['category'] == 'Onderwijs'){echo "selected";} ?>>Onderwijs</option>
-            <option value="Zorg" <?php if($_POST['category'] == 'Zorg'){echo "selected";} ?>>Zorg</option>
-            <option value="Economie" <?php if($_POST['category'] == 'Economie'){echo "selected";} ?>>Economie</option>
-            <option value="Defensie" <?php if($_POST['category'] == 'Defensie'){echo "selected";} ?>>Defensie</option>
-            <option value="Koningshuis" <?php if($_POST['category'] == 'Koningshuis'){echo "selected";} ?>>Koningshuis</option>
-            <option value="Binnenland" <?php if($_POST['category'] == 'Binnenland'){echo "selected";} ?>>Binnenland</option>
-            <option value="Buitenland" <?php if($_POST['category'] == 'Buitenland'){echo "selected";} ?>>Buitenland</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="sel1">Sorteren op:</label>
-          <select class="form-control" id="sel1" name="sort" onchange="this.form.submit()">
-            <option value="nieuw-oud" <?php if($_POST['category'] == 'nieuw-oud'){echo "selected";} ?>>Nieuw-oud</option>
-            <option value="oud-nieuw" <?php if($_POST['category'] == 'oud-nieuw'){echo "selected";} ?>>Oud-nieuw</option>
-            <option value="views" <?php if($_POST['category'] == 'views'){echo "selected";} ?>>Meest bekeken</option>
-            <option value="lesviews" <?php if($_POST['category'] == 'lesviews'){echo "selected";} ?>>Minst bekeken</option>
+            <option value="Onderwijs">Onderwijs</option>
+            <option value="Zorg">Zorg</option>
+            <option value="Economie">Economie</option>
+            <option value="Defensie">Defensie</option>
+            <option value="Koningshuis">Koningshuis</option>
+            <option value="Binnenland">Binnenland</option>
+            <option value="Buitenland">Buitenland</option>
           </select>
         </div>
         <button type="submit" class="btn btn-primary">Zoeken</button>
