@@ -1,6 +1,6 @@
 <?php
   $servername = '213.10.31.95';
-  $dbusername = 'Peter';
+  $dbusername = 'haagsefeiten';
   $dbpassword = 'ShoarmaLikken10!';
   $dbdatabase = 'HaagseFeiten';
   $tablename = "user";
