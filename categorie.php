@@ -37,10 +37,10 @@ if($_SESSION['logged_in'] != TRUE) {
         <div class="text">VVD en CDA willen buitenlandse verkeersovertreders aanpakken</div>
       </a>
     </div>
-    
+
   </div>
 
-
+</div>
   <!--<div class="container">
   <div id="accordion">
   <h3>Onderwijs</h3>
@@ -104,12 +104,13 @@ Nog meer dingen
           <th>Naam</th>
           <th>Onderwerp</th>
           <th>Datum</th>
+          <th style="text-align: center;">Favorieten</th>
         </tr>
       </thead>
       <tbody>
         <?php
         if($_SERVER['REQUEST_METHOD'] == 'POST' || (!$_POST['search'] && $_POST['category'] == '*')) {
-          $search = $_POST['search'];
+        $search = $_POST['search'];
           $category = $_POST['category'];
           if($search){
             if($category == "*"){
@@ -144,11 +145,15 @@ Nog meer dingen
               <td><a href="#datamodal" data-toggle="modal" data-target="#datamodal">'.$row["name"].'</a></td>
               <td>'.$row["subject"].'</td>
               <td>'.$ddate.'</td>
+              <td style="text-align: center;"><i class="fa fa-star-o"></i></td>
               </tr>';
             }
           } else {
+            if($category = "*") {
+              $sql = "SELECT * FROM Documents";
+            } else {
             $sql = "SELECT * FROM Documents WHERE subject='$category'";
-
+            }
             foreach($conn->query($sql) as $row){
               $olddate = $row["ddate"];
               $myDateTime = DateTime::createFromFormat('Y-m-d', $olddate);
@@ -157,6 +162,7 @@ Nog meer dingen
               <td><a href="#datamodal" data-toggle="modal" data-target="#datamodal">'.$row["name"].'</a></td>
               <td>'.$row["subject"].'</td>
               <td>'.$ddate.'</td>
+              <td style="text-align: center;"><i class="fa fa-star-o"></i></td>
               </tr>';
             }
           }
@@ -173,6 +179,7 @@ Nog meer dingen
             <td><a href="#datamodal" data-toggle="modal" data-target="#datamodal">'.$row["name"].'</a></td>
             <td>'.$row["subject"].'</td>
             <td>'.$ddate.'</td>
+            <td style="text-align: center;"><i class="fa fa-star-o"></i></td>
             </tr>';
           }
         }
@@ -232,5 +239,16 @@ $('#pdf_frame').css('height','auto');
 <li>&#169;Copyright 2016</li>
 </div>
 </div> -->
+
+  <script>
+  $(function() {
+    $('.fa').click(function() {
+      var wasPlay = $(this).hasClass('fa-star-o');
+      $(this).removeClass('fa-star-o fa-star');
+      var klass = wasPlay ? 'fa-star' : 'fa-star-o';
+      $(this).addClass(klass)
+    });
+  });
+  </script>
 </body>
 </html>

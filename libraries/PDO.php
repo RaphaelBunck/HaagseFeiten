@@ -1,8 +1,8 @@
 <?php
-  $servername = '213.10.31.95';
-  $dbusername = 'mysql';
-  $dbpassword = 'ShoarmaLikken10!';
-  $dbdatabase = 'haagsefeiten';
+  $servername = 'localhost';
+  $dbusername = 'quinten';
+  $dbpassword = 'G1a2m4E7';
+  $dbdatabase = 'HaagseFeiten';
   $tablename = "user";
 
   try {

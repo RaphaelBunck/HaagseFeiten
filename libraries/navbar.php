@@ -37,6 +37,11 @@
         <li><a href="#">Over ons</a></li>
         <li><a href="#">Nieuws</a></li>
         <li><a href="#">Contact</a></li>
+        <?php
+          if($_SESSION['logged_in'] == True && $_SESSION['privilage'] == 1) {
+            echo "<li><a href=\"add_docs.php\">Administratie</a></li>";
+          }
+        ?>
 
       </ul>
       <form class="navbar-form navbar-right">
@@ -63,3 +68,5 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+<?php include("libraries/PDO.php"); ?>

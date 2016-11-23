@@ -33,7 +33,7 @@
           global $username, $first_name, $last_name, $email, $dateob, $finalpassword;
           $servername = 'localhost';
           $dbusername = 'Peter';
-          $dbpassword = 'ShoarmaLikken10!';
+          $dbpassword = 'Likmijnvis10!';
           $dbdatabase = 'HaagseFeiten';
           $tablename = "user";
           $timestamp = date("Y-m-d");
