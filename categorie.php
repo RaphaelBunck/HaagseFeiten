@@ -179,7 +179,7 @@ Nog meer dingen
             <td><a href="#datamodal" data-toggle="modal" data-target="#datamodal">'.$row["name"].'</a></td>
             <td>'.$row["subject"].'</td>
             <td>'.$ddate.'</td>
-            <td style="text-align: center;"><i class="fa fa-star-o"></i></td>
+            <td style="text-align: center;"><i onclick="favorite(' . $row['did'] . ')"class="fa fa-star-o"></i></td>
             </tr>';
           }
         }
@@ -241,14 +241,29 @@ $('#pdf_frame').css('height','auto');
 </div> -->
 
   <script>
-  $(function() {
+
+  function favorite(did){
+    $.post("categorie/favorite.php",
+    {
+      did: did
+    },
+    function(data,status){
+       alert("Data: " + data + "\nStatus: " + status);
+       var wasPlay = $(this).hasClass('fa-star-o');
+       $(this).removeClass('fa-star-o fa-star');
+       var klass = wasPlay ? 'fa-star' : 'fa-star-o';
+       $(this).addClass(klass)
+    });
+  }
+
+  /*$(function() {
     $('.fa').click(function() {
       var wasPlay = $(this).hasClass('fa-star-o');
       $(this).removeClass('fa-star-o fa-star');
       var klass = wasPlay ? 'fa-star' : 'fa-star-o';
       $(this).addClass(klass)
     });
-  });
+  });*/
   </script>
 </body>
 </html>
