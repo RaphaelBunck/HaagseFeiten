@@ -124,29 +124,56 @@ Nog meer dingen
               $did = $row['did'];
               $sql = "SELECT * FROM Documents WHERE did='$did'";
               foreach($conn->query($sql) as $row){
+
+                $did = $row['did'];
+
+                $result = false;
+                $sql = "SELECT * FROM usertag WHERE did='$did' AND uid='$uid' AND favorite=1";
+                foreach($conn->query($sql) as $utrow){
+                  $result = true;
+                }
+
                 $olddate = $row["ddate"];
                 $myDateTime = DateTime::createFromFormat('Y-m-d', $olddate);
                 $ddate = $myDateTime->format('d-m-Y');
                 echo '<tr>
                 <td><a href="#datamodal" data-toggle="modal" data-target="#datamodal">'.$row["name"].'</a></td>
                 <td>'.$row["subject"].'</td>
-                <td>'.$ddate.'</td>
-                </tr>';
+                <td>'.$ddate.'</td>';
+              if($result){
+                echo '<td style="text-align: center;"><button onclick="unfavorite(' . $did . ')" class="fa fa-star"></button></td>';
+              } else {
+                echo '<td style="text-align: center;"><button onclick="favorite(' . $did . ')" class="fa fa-star-o"></button></td>';
+              }
+                echo '</tr>';
               }
             }
 
             $sql = "SELECT * FROM Documents WHERE subject LIKE '%$search%'";
 
             foreach($conn->query($sql) as $row){
+
+              $did = $row['did'];
+
+              $result = false;
+              $sql = "SELECT * FROM usertag WHERE did='$did' AND uid='$uid' AND favorite=1";
+              foreach($conn->query($sql) as $utrow){
+                $result = true;
+              }
+
               $olddate = $row["ddate"];
               $myDateTime = DateTime::createFromFormat('Y-m-d', $olddate);
               $ddate = $myDateTime->format('d-m-Y');
               echo '<tr>
               <td><a href="#datamodal" data-toggle="modal" data-target="#datamodal">'.$row["name"].'</a></td>
               <td>'.$row["subject"].'</td>
-              <td>'.$ddate.'</td>
-              <td style="text-align: center;"><i class="fa fa-star-o"></i></td>
-              </tr>';
+              <td>'.$ddate.'</td>';
+            if($result){
+              echo '<td style="text-align: center;"><button onclick="unfavorite(' . $did . ')" class="fa fa-star"></button></td>';
+            } else {
+              echo '<td style="text-align: center;"><button onclick="favorite(' . $did . ')" class="fa fa-star-o"></button></td>';
+            }
+              echo '</tr>';
             }
           } else {
             if($category = "*") {
@@ -155,15 +182,28 @@ Nog meer dingen
             $sql = "SELECT * FROM Documents WHERE subject='$category'";
             }
             foreach($conn->query($sql) as $row){
+
+              $did = $row['did'];
+
+              $result = false;
+              $sql = "SELECT * FROM usertag WHERE did='$did' AND uid='$uid' AND favorite=1";
+              foreach($conn->query($sql) as $utrow){
+                $result = true;
+              }
+
               $olddate = $row["ddate"];
               $myDateTime = DateTime::createFromFormat('Y-m-d', $olddate);
               $ddate = $myDateTime->format('d-m-Y');
               echo '<tr>
               <td><a href="#datamodal" data-toggle="modal" data-target="#datamodal">'.$row["name"].'</a></td>
               <td>'.$row["subject"].'</td>
-              <td>'.$ddate.'</td>
-              <td style="text-align: center;"><i class="fa fa-star-o"></i></td>
-              </tr>';
+              <td>'.$ddate.'</td>';
+              if($result){
+              echo '<td style="text-align: center;"><button onclick="unfavorite(' . $did . ')" class="fa fa-star"></button></td>';
+              } else {
+              echo '<td style="text-align: center;"><button onclick="favorite(' . $did . ')" class="fa fa-star-o"></button></td>';
+              }
+              echo '</tr>';
             }
           }
 
@@ -172,15 +212,27 @@ Nog meer dingen
 
           foreach($conn->query($sql) as $row)
           {
+            $did = $row['did'];
+
+            $result = false;
+            $sql = "SELECT * FROM usertag WHERE did='$did' AND uid='$uid' AND favorite=1";
+            foreach($conn->query($sql) as $utrow){
+              $result = true;
+            }
+
             $olddate = $row["ddate"];
             $myDateTime = DateTime::createFromFormat('Y-m-d', $olddate);
             $ddate = $myDateTime->format('d-m-Y');
             echo '<tr>
             <td><a href="#datamodal" data-toggle="modal" data-target="#datamodal">'.$row["name"].'</a></td>
             <td>'.$row["subject"].'</td>
-            <td>'.$ddate.'</td>
-            <td style="text-align: center;"><i onclick="favorite(' . $row['did'] . ')"class="fa fa-star-o"></i></td>
-            </tr>';
+            <td>'.$ddate.'</td>';
+          if($result){
+            echo '<td style="text-align: center;"><button onclick="unfavorite(' . $did . ')" class="fa fa-star"></button></td>';
+          } else {
+            echo '<td style="text-align: center;"><button onclick="favorite(' . $did . ')" class="fa fa-star-o"></button></td>';
+          }
+            echo '</tr>';
           }
         }
         ?>
@@ -248,11 +300,25 @@ $('#pdf_frame').css('height','auto');
       did: did
     },
     function(data,status){
-       alert("Data: " + data + "\nStatus: " + status);
-       var wasPlay = $(this).hasClass('fa-star-o');
-       $(this).removeClass('fa-star-o fa-star');
-       var klass = wasPlay ? 'fa-star' : 'fa-star-o';
-       $(this).addClass(klass)
+      if(data == 1){
+       //alert("Data: " + data + "\nStatus: " + status);
+       $('button[onclick="favorite(' + did + ')"]').attr('class', 'fa fa-star');
+       $('button[onclick="favorite(' + did + ')"]').attr('onclick', 'unfavorite(' + did + ')');
+     }
+    });
+  }
+
+  function unfavorite(did){
+    $.post("categorie/unfavorite.php",
+    {
+      did: did
+    },
+    function(data,status){
+      if(data == 1){
+       //alert("Data: " + data + "\nStatus: " + status);
+       $('button[onclick="unfavorite(' + did + ')"]').attr('class', 'fa fa-star-o');
+       $('button[onclick="unfavorite(' + did + ')"]').attr('onclick', 'favorite(' + did + ')');
+     }
     });
   }
 

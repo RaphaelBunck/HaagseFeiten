@@ -12,8 +12,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
   $did = $_POST['did'];
 
-$stmt = $conn->prepare("INSERT INTO usertag (favorite,uid,did) VALUES (?,?,?)");
-$stmt->execute([1,$uid,$did]);
+$stmt = $conn->prepare("DELETE FROM usertag WHERE favorite=1 AND uid=? AND did=?");
+$stmt->execute([$uid,$did]);
 
 echo 1;
 }
