@@ -109,7 +109,7 @@ Nog meer dingen
       </thead>
       <tbody>
         <?php
-        if($_SERVER['REQUEST_METHOD'] == 'POST' || (!$_POST['search'] && $_POST['category'] == '*')) {
+      if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['category'])) {
         $search = $_POST['search'];
           $category = $_POST['category'];
           if($search){
@@ -206,6 +206,43 @@ Nog meer dingen
               echo '</tr>';
             }
           }
+
+        } elseif (isset($_POST['indexsearch'])) {
+
+          $indexsearch = $_POST['indexsearch'];
+
+          $sql = "SELECT * FROM tag WHERE tag LIKE '%$indexsearch%'";
+
+          foreach($conn->query($sql) as $row)
+          {
+            $did = $row['did'];
+            $sql = "SELECT * FROM Documents WHERE did='$did'";
+            foreach($conn->query($sql) as $row){
+
+              $did = $row['did'];
+
+              $result = false;
+              $sql = "SELECT * FROM usertag WHERE did='$did' AND uid='$uid' AND favorite=1";
+              foreach($conn->query($sql) as $utrow){
+                $result = true;
+              }
+
+              $olddate = $row["ddate"];
+              $myDateTime = DateTime::createFromFormat('Y-m-d', $olddate);
+              $ddate = $myDateTime->format('d-m-Y');
+              echo '<tr>
+              <td><a href="#datamodal" data-toggle="modal" data-target="#datamodal">'.$row["name"].'</a></td>
+              <td>'.$row["subject"].'</td>
+              <td>'.$ddate.'</td>';
+            if($result){
+              echo '<td style="text-align: center;"><button onclick="unfavorite(' . $did . ')" class="fa fa-star"></button></td>';
+            } else {
+              echo '<td style="text-align: center;"><button onclick="favorite(' . $did . ')" class="fa fa-star-o"></button></td>';
+            }
+              echo '</tr>';
+            }
+          }
+
 
         } else {
           $sql = "SELECT * FROM Documents ORDER BY ddate";

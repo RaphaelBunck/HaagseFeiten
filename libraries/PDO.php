@@ -2,7 +2,8 @@
   $servername = '213.10.31.95';
   $dbusername = 'mysql';
   $dbpassword = 'ShoarmaLikken10!';
-  $dbdatabase = 'HaagseFeiten';
+  $dbdatabase = 'haagsefeiten';
+  $tablename = "user";
 
   try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbdatabase", $dbusername, $dbpassword);

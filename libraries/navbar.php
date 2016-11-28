@@ -38,15 +38,15 @@
         <li><a href="#">Nieuws</a></li>
         <li><a href="#">Contact</a></li>
         <?php
-          if($_SESSION['logged_in'] == True && $_SESSION['privilage'] == 1) {
-            echo "<li><a href=\"add_docs.php\">Administratie</a></li>";
-          }
+        if($_SESSION['logged_in'] == True && $_SESSION['privilage'] == 1) {
+          echo '<li><a href="add_docs.php">Beheerders</a></li>';
+        }
         ?>
 
       </ul>
-      <form class="navbar-form navbar-right">
+      <form action="categorie.php" method="POST" class="navbar-form navbar-right">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Zoeken">
+          <input type="text" class="form-control" placeholder="Zoeken" name="indexsearch">
         </div>
         <button type="submit" class="btn btn-default">Zoek</button>
       </form>
@@ -56,6 +56,8 @@
               echo
               '<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Ingelogd als: ' . $first_name . ' ' . $last_name .' <span class="caret"></span></a>
                 <ul class="dropdown-menu">
+                <li><a href="favorites.php">Favoriete documenten</a></li>
+                <li><a href="#">Instellingen</a></li>
                 <li><a href="libraries/logout.php">Uitloggen</a></li>
                </ul>
               </li>';
@@ -68,5 +70,3 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
-<?php include("libraries/PDO.php"); ?>
