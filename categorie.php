@@ -137,7 +137,7 @@ Nog meer dingen
                 $myDateTime = DateTime::createFromFormat('Y-m-d', $olddate);
                 $ddate = $myDateTime->format('d-m-Y');
                 echo '<tr>
-                <td><a href="#datamodal" data-toggle="modal" data-target="#datamodal">'.$row["name"].'</a></td>
+                <td><a href="test.pdf" target="blank">'.$row["name"].'</a></td>
                 <td>'.$row["subject"].'</td>
                 <td>'.$ddate.'</td>';
               if($result){
@@ -165,7 +165,7 @@ Nog meer dingen
               $myDateTime = DateTime::createFromFormat('Y-m-d', $olddate);
               $ddate = $myDateTime->format('d-m-Y');
               echo '<tr>
-              <td><a href="#datamodal" data-toggle="modal" data-target="#datamodal">'.$row["name"].'</a></td>
+              <td><a href="test.pdf" target="blank">'.$row["name"].'</a></td>
               <td>'.$row["subject"].'</td>
               <td>'.$ddate.'</td>';
             if($result){
@@ -195,7 +195,7 @@ Nog meer dingen
               $myDateTime = DateTime::createFromFormat('Y-m-d', $olddate);
               $ddate = $myDateTime->format('d-m-Y');
               echo '<tr>
-              <td><a href="#datamodal" data-toggle="modal" data-target="#datamodal">'.$row["name"].'</a></td>
+              <td><a href="test.pdf" target="blank">'.$row["name"].'</a></td>
               <td>'.$row["subject"].'</td>
               <td>'.$ddate.'</td>';
               if($result){
@@ -278,31 +278,6 @@ Nog meer dingen
     </table>
   </div>
 
-</div>
-
-<a href="#datamodal" data-toggle="modal" data-target="#datamodal">
-  Launch demo modal
-</a>
-
-
-
-<div class="modal fade bs-example-modal-lg" id="datamodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <object data="test.pdf" type="application/pdf" width="100%" id="pdf_frame">
-          alt : <a href="test.pdf">test.pdf</a>
-        </object>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
 </div>
 
 <script type="text/javascript">
